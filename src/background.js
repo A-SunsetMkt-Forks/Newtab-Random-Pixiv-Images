@@ -49,7 +49,7 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-(function () {
+(async function () {
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -520,6 +520,7 @@ chrome.runtime.onInstalled.addListener(() => {
           ]).then(() => item)
         ).then((item) => {
           this.push(item);
+          chrome.storage.session.set({ illustFeederPool: this.array });
         }).catch((e) => { console.log(e) })
           .finally(() => { --this.running; }));
       }
@@ -528,6 +529,8 @@ chrome.runtime.onInstalled.addListener(() => {
   }
 
   const illustFeeder = new IllustFeeder();
+  cache = await chrome.storage.session.get("illustFeederPool");
+  illustFeeder.array = cache.illustFeederPool || [];
 
   chrome.runtime.onMessage.addListener(function (
     message,

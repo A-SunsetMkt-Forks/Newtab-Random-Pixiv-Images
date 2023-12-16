@@ -9,7 +9,8 @@
     "service_worker": "background.js"
   },
   "permissions": [
-    "declarativeNetRequestWithHostAccess"
+    "storage",
+    "declarativeNetRequest"
   ],
   "host_permissions": [
     "*://*.pixiv.net/*",
