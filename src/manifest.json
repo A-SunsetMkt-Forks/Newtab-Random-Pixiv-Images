@@ -1,6 +1,6 @@
 {
   "name": "Newtab Random Pixiv Images",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "manifest_version": 3,
   "chrome_url_overrides": {
     "newtab": "index.html"
